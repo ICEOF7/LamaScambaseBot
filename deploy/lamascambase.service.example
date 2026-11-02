@@ -1,0 +1,22 @@
+[Unit]
+Description=LamaScambaseBot (Telegram polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lamascambase
+WorkingDirectory=/srv/lamascambase
+EnvironmentFile=/srv/lamascambase/.env
+ExecStart=/srv/lamascambase/.venv/bin/python /srv/lamascambase/app.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/lamascambase/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
